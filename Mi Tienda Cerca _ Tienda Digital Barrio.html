@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi Tienda Cerca | Tienda Digital Barrio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5faf7;--surface:#fff;--ink:#14261f;--muted:#566b62;--line:#d5e5dc;--green:#0f5c4a;--btn:#0f5c4a;--btnink:#fff;--sun:#f7c948;--sunink:#3d2f00;--tint:#e4f2ea;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1814;--surface:#15241e;--ink:#e9f3ee;--muted:#9db4aa;--line:#25382f;--green:#6fd3b0;--btn:#6fd3b0;--btnink:#08241b;--sun:#f7c948;--sunink:#3d2f00;--tint:#1b3028}}
+:root[data-theme="dark"]{--bg:#0e1814;--surface:#15241e;--ink:#e9f3ee;--muted:#9db4aa;--line:#25382f;--green:#6fd3b0;--btn:#6fd3b0;--btnink:#08241b;--sun:#f7c948;--sunink:#3d2f00;--tint:#1b3028}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:10}
+h1,h2,h3,.brand{font-family:"Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:64px;flex-wrap:wrap}
+.brand{font-weight:800;font-size:1.25rem;color:var(--green)}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;margin-left:18px}
+nav a:hover{color:var(--green)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+.btn{display:inline-block;border:0;border-radius:12px;background:var(--btn);color:var(--btnink);padding:14px 22px;font:700 1rem inherit;text-decoration:none;cursor:pointer}
+.btn.alt{background:transparent;color:var(--green);box-shadow:inset 0 0 0 2px var(--green)}
+.hero{padding:56px 0 48px;background:var(--tint);border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,5.5vw,3.7rem);line-height:1.05;margin:0 0 16px;font-weight:800}
+.hero p{color:var(--muted);font-size:1.1rem;max-width:34em;margin:0 0 24px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.slip{background:var(--surface);border:2px dashed var(--line);border-radius:6px;padding:20px 22px;transform:rotate(1.2deg)}
+.slip h3{margin:0 0 10px;font-size:1.1rem}
+.slip li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dotted var(--line);list-style:none}
+.slip ul{margin:0;padding:0}
+.slip small{display:block;margin-top:12px;color:var(--muted)}
+.tag{display:inline-block;background:var(--sun);color:var(--sunink);font-weight:700;border-radius:6px;padding:2px 8px;font-size:.85rem}
+section{padding:48px 0}
+h2{font-size:1.9rem;margin:0 0 6px;font-weight:800}
+.lead{color:var(--muted);margin:0 0 24px;max-width:40em}
+.cat{margin:26px 0 10px;font-size:1.15rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.item{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;align-items:center;gap:12px}
+.item .e{font-size:1.9rem}.item .t{flex:1;min-width:0}.item b{display:block}.item span{color:var(--muted);font-size:.88rem}
+.qty{display:flex;align-items:center;gap:6px}
+.qty button{width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:var(--tint);color:var(--ink);font:700 1.2rem inherit;cursor:pointer}
+.qty output{min-width:1.4em;text-align:center;font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;counter-reset:s}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;counter-increment:s}
+.step::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--sun);color:var(--sunink);font-weight:800;margin-bottom:8px}
+.step b{display:block;margin-bottom:4px}
+#pedido{background:var(--tint);border-top:1px solid var(--line)}
+.order{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start}
+form{display:grid;gap:14px}
+label{font-weight:700;font-size:.93rem;display:block}
+input,select,textarea{width:100%;margin-top:6px;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit}
+textarea{min-height:84px}
+.hint{font-size:.85rem;color:var(--muted);margin:0}
+.ticket{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 80px)}
+.ticket h3{margin:0 0 8px}.ticket ul{margin:0;padding:0;list-style:none}
+.ticket li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px dotted var(--line)}
+.empty{color:var(--muted)}
+.result{display:none;margin-top:14px;padding:16px;border-radius:12px;background:var(--surface);border:2px solid var(--green)}
+.result textarea{min-height:130px}
+.err{color:#b3261e;font-weight:600;min-height:1.2em;margin:0}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#ff9b93}}
+footer{padding:26px 0;color:var(--muted);font-size:.88rem}
+@media(max-width:760px){.hero-grid,.order,.steps,.grid{grid-template-columns:1fr}.slip{transform:none}.ticket{position:static}nav a{margin:0 14px 0 0}.nav{padding:10px 0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav"><div class="brand">🛍️ Mi Tienda Cerca</div><nav><a href="#inicio">Inicio</a><a href="#catalogo">Catálogo</a><a href="#como-pedir">Cómo pedir</a></nav></div></header>
+<main>
+<section class="hero" id="inicio"><div class="wrap hero-grid">
+<div><h1>Tu tienda del barrio, ahora más cerca de casa</h1>
+<p>Consulta productos y envía tu pedido desde el celular; confirmamos disponibilidad por WhatsApp.</p>
+<div class="actions"><a class="btn" href="#pedido">Hacer mi pedido</a><a class="btn alt" href="#catalogo">Ver catálogo</a></div></div>
+<div class="slip" aria-hidden="true"><h3>Pedido de ejemplo</h3><ul><li><span>2 × Arroz</span><span>✓</span></li><li><span>1 × Aceite</span><span>✓</span></li><li><span>1 × Detergente</span><span>✓</span></li></ul><small><span class="tag">Confirmado</span> La tienda te responde con el valor final.</small></div>
+</div></section>
+
+<section id="catalogo"><div class="wrap"><h2>Elige lo que necesitas</h2>
+<p class="lead">Productos de ejemplo. Toca + para agregarlos a tu pedido; la tienda confirma existencias y precios.</p>
+<div id="cat"></div></div></section>
+
+<section id="como-pedir" style="padding-top:0"><div class="wrap"><h2>Cómo pedir</h2><p class="lead">Tres pasos y sin desplazarte para preguntar.</p>
+<div class="steps"><div class="step"><b>Elige</b>Agrega productos del catálogo o escríbelos tú.</div><div class="step"><b>Envía</b>Completa tus datos y escoge recoger o domicilio.</div><div class="step"><b>Confirma</b>La tienda revisa existencias y te responde por WhatsApp.</div></div></div></section>
+
+<section id="pedido"><div class="wrap"><h2>Hacer mi pedido</h2><p class="lead">Al enviar, se abre WhatsApp con tu pedido listo para mandar a la tienda.</p>
+<div class="order">
+<div><form id="f" novalidate>
+<label>Nombre<input id="name" autocomplete="given-name" placeholder="Tu nombre" required></label>
+<label>Celular<input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ej. 3001234567" required></label>
+<label>Forma de entrega<select id="delivery"><option value="Recoger en tienda">Recoger en tienda</option><option value="Domicilio (consultar valor)">Domicilio (consultar valor)</option></select></label>
+<label id="addrL" hidden>Dirección o barrio<input id="addr" autocomplete="street-address" placeholder="Calle, barrio o referencia"></label>
+<label>Otros productos o comentarios<textarea id="other" placeholder="Ej. 1 libra de lentejas, sin azúcar"></textarea></label>
+<p class="hint">Usaremos tus datos solo para atender este pedido.</p>
+<p class="err" id="err" role="alert"></p>
+<button class="btn" type="submit">Enviar pedido por WhatsApp</button></form>
+<div class="result" id="res" role="status"><b>Tu pedido está listo.</b> <span id="resTxt"></span>
+<p><a class="btn" id="wa" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a></p>
+<label>Mensaje del pedido<textarea id="msg" readonly></textarea></label>
+<p><button class="btn alt" type="button" id="copy">Copiar mensaje</button></p></div></div>
+<aside class="ticket" aria-live="polite"><h3>Tu pedido</h3><ul id="tk"></ul></aside>
+</div></div></section>
+</main>
+<footer><div class="wrap">Mi Tienda Cerca · Prototipo académico de Tienda Digital Barrio. Productos, precios, inventario y domicilios los confirma cada tienda.</div></footer>
+<script>
+// Número de WhatsApp de la tienda, con indicativo y solo dígitos. Ejemplo Colombia: "573001234567".
+// Si queda vacío, la página muestra el mensaje para copiarlo y enviarlo manualmente.
+var SHOP_WHATSAPP = "573138782115";
+var DATA = [
+ ["Abarrotes",[["🍚","Arroz","1 kg"],["🫒","Aceite","1 litro"],["🫘","Lentejas","500 g"],["🍝","Pasta","250 g"],["🧂","Sal","500 g"],["🍬","Azúcar","1 kg"]]],
+ ["Bebidas",[["💧","Agua","Botella"],["🧃","Jugos","Caja"],["🥤","Gaseosa","1,5 litros"]]],
+ ["Aseo del hogar",[["🧴","Detergente","1 kg"],["🧼","Jabón de barra","Unidad"],["🧻","Papel higiénico","Paquete"]]]
+];
+var qty = {};
+function $(i){return document.getElementById(i)}
+function paint(){
+  var cat = $("cat"); cat.innerHTML = "";
+  DATA.forEach(function(g){
+    var h = document.createElement("h3"); h.className = "cat"; h.textContent = g[0]; cat.appendChild(h);
+    var grid = document.createElement("div"); grid.className = "grid";
+    g[1].forEach(function(p){
+      var n = qty[p[1]] || 0, d = document.createElement("div"); d.className = "item";
+      d.innerHTML = '<div class="e" aria-hidden="true">'+p[0]+'</div><div class="t"><b>'+p[1]+'</b><span>'+p[2]+'</span></div><div class="qty"><button type="button" aria-label="Quitar uno de '+p[1]+'">−</button><output>'+n+'</output><button type="button" aria-label="Agregar uno de '+p[1]+'">+</button></div>';
+      var b = d.querySelectorAll("button");
+      b[0].onclick = function(){ if(qty[p[1]]>0){ qty[p[1]]--; update(); } };
+      b[1].onclick = function(){ qty[p[1]] = (qty[p[1]]||0)+1; update(); };
+      grid.appendChild(d);
+    });
+    cat.appendChild(grid);
+  });
+}
+function update(){
+  var ys = document.scrollingElement.scrollTop; paint(); document.scrollingElement.scrollTop = ys; ticket();
+}
+function lines(){ return Object.keys(qty).filter(function(k){return qty[k]>0}).map(function(k){return qty[k]+" × "+k}); }
+function ticket(){
+  var l = lines(), u = $("tk");
+  u.innerHTML = l.length ? l.map(function(x){return "<li>"+x+"</li>"}).join("") : '<li class="empty">Aún no agregas productos.</li>';
+}
+$("delivery").onchange = function(){ $("addrL").hidden = this.value.indexOf("Domicilio") !== 0; };
+$("f").addEventListener("submit", function(e){
+  e.preventDefault();
+  var name = $("name").value.trim(), phone = $("phone").value.replace(/\D/g,""), other = $("other").value.trim(), del = $("delivery").value, addr = $("addr").value.trim(), l = lines();
+  var err = "";
+  if(!name) err = "Escribe tu nombre.";
+  else if(phone.length < 10) err = "Escribe un celular de 10 dígitos.";
+  else if(!l.length && !other) err = "Agrega al menos un producto o escríbelo en comentarios.";
+  else if(del.indexOf("Domicilio") === 0 && !addr) err = "Escribe tu dirección o barrio para consultar el domicilio.";
+  $("err").textContent = err; if(err) return;
+  var m = "Hola, soy "+name+". Mi celular es "+phone+".\nQuisiera pedir:\n"+(l.length?l.map(function(x){return "- "+x}).join("\n"):"")+(other?"\nOtros: "+other:"")+"\nEntrega: "+del+(addr?" – "+addr:"")+"\n¿Me confirman disponibilidad y valor total?";
+  $("msg").value = m; $("res").style.display = "block";
+  var shop = SHOP_WHATSAPP.replace(/\D/g,""), wa = $("wa");
+  if(shop.length >= 10){ wa.href = "https://wa.me/"+shop+"?text="+encodeURIComponent(m); wa.style.display = ""; $("resTxt").textContent = "Toca el botón para enviarlo a la tienda por WhatsApp."; }
+  else { wa.style.display = "none"; $("resTxt").textContent = "Copia el mensaje y envíalo por WhatsApp a la tienda."; }
+  $("res").scrollIntoView({block:"nearest"});
+});
+$("copy").onclick = function(){ var t = $("msg"); t.select(); try{ navigator.clipboard.writeText(t.value); }catch(x){ document.execCommand("copy"); } this.textContent = "Mensaje copiado"; };
+paint(); ticket();
+</script>
+</body>
+</html>
